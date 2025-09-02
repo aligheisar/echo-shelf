@@ -1,7 +1,9 @@
-import "./globals.css";
+import "@/globals.css";
+
+import Providers from "@/context/providers";
 
 const Root = () => {
-  return null;
+  return <Providers>{null}</Providers>;
 };
 
 export default Root;

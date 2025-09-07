@@ -1,9 +1,8 @@
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import "@/globals.css";
 
-import Providers from "@/context/providers";
-
 const Root = () => {
-  return <Providers>{null}</Providers>;
+  return <ThemeSwitcher />;
 };
 
 export default Root;

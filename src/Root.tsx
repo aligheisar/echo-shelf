@@ -1,9 +1,12 @@
 import "@/globals.css";
 
-import Providers from "@/context/providers";
+import { useTheme } from "@/hook/use-theme";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 const Root = () => {
-  return <Providers>{null}</Providers>;
+  useTheme();
+
+  return <ThemeSwitcher />;
 };
 
 export default Root;

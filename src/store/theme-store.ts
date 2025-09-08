@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-type Theme = "dark" | "light" | "system";
+import type { Theme } from "@/types/theme";
 
 type State = {
   theme: Theme;
@@ -17,7 +16,6 @@ const useThemeStore = create<State & Action>()(
       theme: "system",
       setTheme(theme) {
         set({ theme });
-        applyTheme(theme);
       },
     }),
     {
@@ -37,33 +35,5 @@ const useThemeStore = create<State & Action>()(
     }
   )
 );
-
-const applyTheme = (theme: Theme) => {
-  const root = window.document.documentElement;
-  root.classList.remove("light", "dark");
-
-  if (theme === "system") {
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    root.classList.add(systemTheme);
-  } else {
-    root.classList.add(theme);
-  }
-};
-
-if (typeof window !== "undefined") {
-  const initialTheme = useThemeStore.getState().theme;
-  applyTheme(initialTheme);
-
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  mediaQuery.addEventListener("change", () => {
-    const currentTheme = useThemeStore.getState().theme;
-    if (currentTheme === "system") {
-      applyTheme("system");
-    }
-  });
-}
 
 export { useThemeStore };

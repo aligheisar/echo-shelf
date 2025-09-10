@@ -1,12 +1,13 @@
 import "@/globals.css";
 
+import { RouterProvider } from "react-router";
 import { useTheme } from "@/hook/use-theme";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { router } from "@/Router";
 
 const Root = () => {
   useTheme();
 
-  return <ThemeSwitcher />;
+  return <RouterProvider router={router} />;
 };
 
 export default Root;

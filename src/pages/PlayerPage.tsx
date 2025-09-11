@@ -1,5 +1,7 @@
+import { Player } from "@/features/player/components/Player";
+
 const PlayerPage = () => {
-  return <h1>player</h1>;
+  return <Player />;
 };
 
 export { PlayerPage };
